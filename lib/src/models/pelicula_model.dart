@@ -17,6 +17,7 @@ class Peliculas {
 }
 
 class Pelicula {
+  String uniqueId;
   bool adult;
   String backdropPath;
   List<int> genreIds;
@@ -57,7 +58,7 @@ class Pelicula {
     originalLanguage = json['original_language'];
     originalTitle = json['original_title'];
     overview = json['overview'];
-    popularity = json['popularity'];
+    popularity = json['popularity'] / 1;
     posterPath = json['poster_path'];
     releaseDate = json['release_date'];
     title = json['title'];
@@ -71,6 +72,14 @@ class Pelicula {
       return 'https://i.ibb.co/0Jmshvb/no-image.png';
     } else {
       return 'https://image.tmdb.org/t/p/original/$posterPath';
+    }
+  }
+
+  getBackgroundImg() {
+    if (backdropPath == null) {
+      return 'https://i.ibb.co/0Jmshvb/no-image.png';
+    } else {
+      return 'https://image.tmdb.org/t/p/original/$backdropPath';
     }
   }
 }
